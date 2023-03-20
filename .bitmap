@@ -9,30 +9,18 @@
  */
 
 {
+    "core": {
+        "scope": "",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "return/core"
+    },
     "envs/my-react-env": {
         "scope": "",
-        "version": "",
+        "version": "0.0.1",
         "defaultScope": "kinvora.return",
         "mainFile": "index.ts",
-        "rootDir": "return/envs/my-react-env",
-        "config": {
-            "teambit.envs/envs": {
-                "env": "teambit.envs/env"
-            },
-            "teambit.dependencies/dependency-resolver": {},
-            "teambit.compositions/compositions": {},
-            "teambit.docs/docs": {},
-            "teambit.preview/preview": {},
-            "teambit.component/dev-files": {},
-            "teambit.pipelines/builder": {},
-            "teambit.component/forking": {
-                "forkedFrom": {
-                    "scope": "teambit.react",
-                    "name": "react-env-extension",
-                    "version": "0.0.6"
-                }
-            }
-        }
+        "rootDir": "return/envs/my-react-env"
     },
     "$schema-version": "15.0.0"
 }

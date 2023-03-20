@@ -1,5 +1,10 @@
 # ignored files and directories will (also) be excluded from your components.
 
+# ReScript
+/lib/
+.bsb.lock
+.merlin
+
 # Bit
 .bit
 public

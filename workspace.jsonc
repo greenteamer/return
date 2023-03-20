@@ -39,6 +39,7 @@
     "packageManager": "teambit.dependencies/pnpm",
     "policy": {
       "dependencies": {
+        "@dzakh/rescript-ava": "^2.1.0",
         "@teambit/defender.eslint-linter": "0.0.7",
         "@teambit/defender.jest-tester": "0.0.8",
         "@teambit/defender.prettier-formatter": "0.0.4",
@@ -48,6 +49,7 @@
         "@teambit/react.mounter": "0.0.8",
         "@teambit/react.react-env": "0.0.44",
         "@teambit/typescript.typescript-compiler": "0.0.6",
+        "ava": "^5.1.1",
         "rescript": "^10.1.3"
       },
       "peerDependencies": {}

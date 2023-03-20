@@ -1,0 +1,15 @@
+---
+labels: ['module']
+description: 'A general purpose node module'
+---
+
+API:
+
+```res
+test("Reader. make addToOne with doubled deps deps", ctx => {
+  let addToOne = env => 1 + env
+  let doubleEnv = env => env * 2
+  let program = R.make(addToOne)->R.local(doubleEnv)->R.run
+  ctx->Assert.is(program(5), 11, ())
+})
+```
