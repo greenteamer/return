@@ -3,27 +3,53 @@
 
 var Caml_obj = require("rescript/lib/js/caml_obj.js");
 
-function $$eval(_a) {
+function $$eval(_exresion) {
   while(true) {
-    var a = _a;
-    switch (a.TAG | 0) {
+    var exresion = _exresion;
+    switch (exresion.TAG | 0) {
       case /* Value */0 :
-          return a._0._0;
+          return exresion._0._0;
       case /* If */1 :
-          if ($$eval(a._0)) {
-            _a = a._1;
+          if ($$eval(exresion._0)) {
+            _exresion = exresion._1;
             continue ;
           }
-          _a = a._2;
+          _exresion = exresion._2;
           continue ;
       case /* Eq */2 :
-          return Caml_obj.equal($$eval(a._0), $$eval(a._1));
+          return Caml_obj.equal($$eval(exresion._0), $$eval(exresion._1));
       case /* Lt */3 :
-          return $$eval(a._0) < $$eval(a._1);
+          return $$eval(exresion._0) < $$eval(exresion._1);
       
     }
   };
 }
 
+var ifExpr = {
+  TAG: /* If */1,
+  _0: {
+    TAG: /* Value */0,
+    _0: {
+      TAG: /* Bool */0,
+      _0: true
+    }
+  },
+  _1: {
+    TAG: /* Value */0,
+    _0: {
+      TAG: /* Int */1,
+      _0: 1
+    }
+  },
+  _2: {
+    TAG: /* Value */0,
+    _0: {
+      TAG: /* Int */1,
+      _0: 2
+    }
+  }
+};
+
 exports.$$eval = $$eval;
+exports.ifExpr = ifExpr;
 /* No side effect */

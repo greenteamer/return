@@ -4,8 +4,30 @@
 
 var Model = {};
 
-var FSM = {};
+function reducer(action) {
+  if (action.TAG === /* Next */0) {
+    return {
+            TAG: /* Step2 */1,
+            _0: {
+              TAG: /* Step1 */0,
+              _0: action._0._0,
+              _1: undefined
+            },
+            _1: "address"
+          };
+  } else {
+    return {
+            TAG: /* Step1 */0,
+            _0: action._0._0._0,
+            _1: undefined
+          };
+  }
+}
+
+var DoubleStep = {
+  reducer: reducer
+};
 
 exports.Model = Model;
-exports.FSM = FSM;
+exports.DoubleStep = DoubleStep;
 /* No side effect */

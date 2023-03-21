@@ -14,8 +14,8 @@ type rec expr<_> =
 
 let rec eval:
   type a. expr<a> => a =
-  a =>
-    switch a {
+  exresion =>
+    switch exresion {
     | Value(Bool(b)) => b
     | Value(Int(i)) => i
     | If(b, l, r) =>
@@ -27,3 +27,5 @@ let rec eval:
     | Eq(a, b) => eval(a) == eval(b)
     | Lt(a, b) => eval(a) < eval(b)
     }
+
+let ifExpr = If(Value(Bool(true)), Value(Int(1)), Value(Int(2)))
