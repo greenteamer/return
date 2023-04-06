@@ -28,6 +28,9 @@ var DoubleStep = {
   reducer: reducer
 };
 
+var StepForm = {};
+
 exports.Model = Model;
 exports.DoubleStep = DoubleStep;
+exports.StepForm = StepForm;
 /* No side effect */

@@ -25,31 +25,35 @@ function $$eval(_exresion) {
   };
 }
 
-var ifExpr = {
-  TAG: /* If */1,
-  _0: {
-    TAG: /* Value */0,
-    _0: {
-      TAG: /* Bool */0,
-      _0: true
-    }
-  },
-  _1: {
-    TAG: /* Value */0,
-    _0: {
-      TAG: /* Int */1,
-      _0: 1
-    }
-  },
-  _2: {
-    TAG: /* Value */0,
-    _0: {
-      TAG: /* Int */1,
-      _0: 2
-    }
-  }
+var Expr = {
+  $$eval: $$eval
 };
 
-exports.$$eval = $$eval;
-exports.ifExpr = ifExpr;
+function $$eval$1(s, ac) {
+  if (s.TAG !== /* Step */0) {
+    return {
+            TAG: /* Confirmed */1,
+            _0: s._0
+          };
+  }
+  var st = s._0;
+  if (typeof ac === "number" || (ac._0 + 1 | 0) < 3) {
+    return {
+            TAG: /* Step */0,
+            _0: st
+          };
+  } else {
+    return {
+            TAG: /* Confirmed */1,
+            _0: true
+          };
+  }
+}
+
+var Branch = {
+  $$eval: $$eval$1
+};
+
+exports.Expr = Expr;
+exports.Branch = Branch;
 /* No side effect */

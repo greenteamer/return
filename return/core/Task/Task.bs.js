@@ -12,8 +12,22 @@ function make(ta) {
         };
 }
 
-function run(ta) {
-  return Curry._1(ta._0, undefined);
+async function run(ta) {
+  try {
+    return await Curry._1(ta._0, undefined);
+  }
+  catch (raw_err){
+    var err = Caml_js_exceptions.internalToOCamlException(raw_err);
+    if (err.RE_EXN_ID === Js_exn.$$Error) {
+      var msg = err._1.message;
+      if (msg !== undefined) {
+        return Js_exn.raiseError("[Task] run can't fail. " + msg);
+      } else {
+        return Js_exn.raiseError("[Task] run can't fail.");
+      }
+    }
+    throw err;
+  }
 }
 
 function map(ta, fab) {

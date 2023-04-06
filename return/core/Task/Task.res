@@ -5,8 +5,17 @@ type t<'a> = Task(unit => promise<'a>)
 @genType
 let make = (ta): t<'a> => Task(ta)
 
+// let run = async (Task(ta): t<'a>) => await ta()
 @genType
-let run = (Task(ta): t<'a>) => ta()
+let run = async (Task(ta): t<'a>) =>
+  switch await ta() {
+  | x => x
+  | exception Js.Exn.Error(err) =>
+    switch Js.Exn.message(err) {
+    | Some(msg) => Js.Exn.raiseError("[Task] run can't fail. " ++ msg)
+    | None => Js.Exn.raiseError("[Task] run can't fail.")
+    }
+  }
 
 @genType
 let map = (Task(ta): t<'a>, fab: 'a => 'b): t<'b> =>

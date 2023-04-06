@@ -3,6 +3,13 @@ module Model = {
   type pickupAddress = string
   type dropoffAddress = string
   type dateConfirmed = Js.Date.t
+
+  type context = {
+    pickupTime: option<pickupTime>,
+    pickupAddress: option<pickupAddress>,
+    dropoffAddress: option<dropoffAddress>,
+    dateConfirmed: option<dateConfirmed>,
+  }
 }
 
 module DoubleStep = {
@@ -19,4 +26,16 @@ module DoubleStep = {
     | Next(Step1(num, ())) => Step2(Step1(num, ()), "address")
     | Prev(Step2(Step1(st, ()), _)) => Step1(st, ())
     }
+}
+
+module StepForm = {
+  type ctx = Model.context
+  type confirmed = Model.dateConfirmed
+
+  type rec state<_> =
+    | FirstStep(ctx): state<unit>
+    | ConfirmedStep(ctx, state<'a>): state<'a>
+    | Step(ctx, state<'a>): state<'a>
+  // | LastStep(ctx, state<ctx, 'a>): state<ctx, 'a>
+  // | ReviewStep(ctx, state<ctx, 'a>, ): state<ctx, 'a>
 }
